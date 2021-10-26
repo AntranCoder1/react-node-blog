@@ -8,7 +8,7 @@ const authRouter = require('./routes/auth.router');
 const connectDB = async () => {
 	try {
 		await mongoose.connect(
-            `mongodb+srv://tranthanhan:1234@blog.0gcwr.mongodb.net/Blog?retryWrites=true&w=majority`,
+            `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@blog.0gcwr.mongodb.net/Blog?retryWrites=true&w=majority`,
 			{
 				useCreateIndex: true,
 				useNewUrlParser: true,
