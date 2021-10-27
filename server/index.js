@@ -4,6 +4,7 @@ const app = express();
 const mongoose = require('mongoose');
 
 const authRouter = require('./routes/auth.router');
+const userRouter = require('./routes/user.router');
 
 const connectDB = async () => {
 	try {
@@ -28,6 +29,7 @@ connectDB()
 
 app.use(express.json());
 app.use('/api/auth', authRouter);
+app.use('/api/users', userRouter);
 
 const port = 5000;
 app.listen(port, () => console.log(`Server running at http://localhost:${port}`))

@@ -4,7 +4,7 @@ const argon2 = require('argon2');
 const jwt = require('jsonwebtoken');
 
 // @route api/auth/register'
-// @desc user
+// @desc REGISTER user
 // @access Public
 router.post('/register', async (req, res) => {
     const { username, email, password } = req.body
@@ -39,6 +39,39 @@ router.post('/register', async (req, res) => {
 
 })
 
-// LOGIN
+// @route POST api/auth/login
+// @desc Login user
+// @access Public
+router.post('/login', async (req, res) => {
+    const { username, password } = req.body
+
+    // Simple validation
+    if (!username || !password)
+        return res.status(400).json({ success: false, message: 'Incorrect username or password' })
+
+    try {
+        // Check for existing user
+        const user = await User.findOne({ username })
+        if (!user)
+            return res.status(400).json({ success: false, message: 'Incorrect username or password' })
+
+        // username found
+        const passwordValidate = await argon2.verify(user.password, password)
+        if (!passwordValidate)
+            return res.status(400).json({ success: false, message: 'Incorrect username or password' })
+
+        // All good
+        // Return taken
+        const accessTaken = jwt.sign({ userId: user._id }, process.env.ACCESS_TOKEN_SECRET)
+        res.json({
+            success: true,
+            message: 'User logged in successfully',
+            accessTaken
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ success: false, message: 'Internal server error' })
+    }
+})
 
 module.exports = router;

@@ -6,3 +6,32 @@ Content-Type: application/json
     "email": "kieuoanh@gmail.com",
     "password": "kieuoanh1"
 }
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "kieuoanh",
+    "password": "kieuoanh1"
+}
+
+###
+
+PUT http://localhost:5000/api/users/6177e0ab66f62c21b430c6e5
+Content-Type: application/json
+
+{
+    "userId": "6177e0ab66f62c21b430c6e5",
+    "username": "thanhan",
+    "password": "tranthanhan1"
+}
+
+###
+DELETE http://localhost:5000/api/users/6177e50adb37e52fc87054ce
+Content-Type: application/json
+
+{
+    "userId": "6177e50adb37e52fc87054ce"
+}
