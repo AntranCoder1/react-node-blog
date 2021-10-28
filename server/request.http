@@ -13,8 +13,8 @@ POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "kieuoanh",
-    "password": "kieuoanh1"
+    "username": "thanhantran",
+    "password": "tranthanhan1"
 }
 
 ###
@@ -24,7 +24,7 @@ Content-Type: application/json
 
 {
     "userId": "6177e0ab66f62c21b430c6e5",
-    "username": "thanhan",
+    "username": "thanhantran",
     "password": "tranthanhan1"
 }
 
@@ -35,3 +35,53 @@ Content-Type: application/json
 {
     "userId": "6177e50adb37e52fc87054ce"
 }
+
+###
+GET http://localhost:5000/api/users/617a586edf311d16c44dfcd1
+
+###
+POST http://localhost:5000/api/post
+Content-Type: application/json
+
+{
+    "title": "Ngọc nữ mới của Hollywood xinh đẹp khó rời mắt",
+    "desc": "Hài hòa giữa vẻ đẹp ngọt ngào với chất riêng quyến rũ, Kathryn Newton chính là làn gió mới trong thế hệ nữ diễn viên trẻ tại Hollywood.",
+    "image": "https://phunuvietnam.mediacdn.vn/thumb_w/700/179072216278405120/2020/11/25/kn8-1606272516697605855007-0-0-2160-3456-crop-1606272917793180616750.jpg",
+    "username": "thanhantran"
+}
+
+###
+PUT http://localhost:5000/api/post/617a70270f5cd5196c26ed64
+Content-Type: application/json
+
+{
+    "title": "Ngọc nữ mới của Hollywood xinh đẹp khó rời mắt",
+    "desc": "Hài hòa giữa vẻ đẹp ngọt ngào với chất riêng quyến rũ, Kathryn Newton chính là làn gió mới trong thế hệ nữ diễn viên trẻ tại Hollywood.",
+    "image": "https://pbs.twimg.com/media/EDE8TYTUYAAv9-R.jpg:large",
+    "username": "thanhantran"
+}
+
+###
+DELETE http://localhost:5000/api/post/617a74240ed43d312cc784a8
+Content-Type: application/json
+
+{
+    "username": "thanhantran"
+}
+
+###
+GET http://localhost:5000/api/post/617a6aaaf46fd53518a36bae
+
+###
+GET http://localhost:5000/api/post?user=thanhantran
+
+###
+POST http://localhost:5000/api/category
+Content-Type: application/json
+
+{
+    "name": "Music"
+}
+
+###
+GET http://localhost:5000/api/category

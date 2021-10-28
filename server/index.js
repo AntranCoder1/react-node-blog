@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 
 const authRouter = require('./routes/auth.router');
 const userRouter = require('./routes/user.router');
+const postRouter = require('./routes/posts.router');
+const categoryRouter = require('./routes/category.router');
 
 const connectDB = async () => {
 	try {
@@ -30,6 +32,8 @@ connectDB()
 app.use(express.json());
 app.use('/api/auth', authRouter);
 app.use('/api/users', userRouter);
+app.use('/api/post', postRouter);
+app.use('/api/category', categoryRouter);
 
 const port = 5000;
 app.listen(port, () => console.log(`Server running at http://localhost:${port}`))

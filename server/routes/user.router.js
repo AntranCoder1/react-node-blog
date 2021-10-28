@@ -53,4 +53,17 @@ router.delete("/:id", async (req, res) => {
     }
 });
 
+// @router api/users
+// @desc GET user
+// access Public
+router.get('/:id', async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+        const { password, ...others} = user._doc;
+        res.status(200).json({ success: true, message: 'successfully', others });
+    } catch (error) {
+        res.status(500).json({ success: false, message: "Can't find the person you're lookin for" })
+    }
+})
+
 module.exports = router;
