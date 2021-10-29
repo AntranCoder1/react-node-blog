@@ -1,12 +1,18 @@
 import React from 'react';
-import Header from '../../header/Header';
+import Header from '../../components/header/Header';
+import Posts from '../../components/posts/Posts';
+import SideBar from '../../components/sideBar/SideBar';
 import './Home.css';
 
 const Home = () => {
     return (
-        <div className="home">
+        <>
             <Header />
-        </div>
+            <div className="home">
+                <Posts />
+                <SideBar />
+            </div>
+        </>
     )
 }
 
