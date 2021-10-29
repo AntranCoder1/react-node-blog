@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const multer  = require('multer');
 
 const authRouter = require('./routes/auth.router');
 const userRouter = require('./routes/user.router');
@@ -27,13 +28,29 @@ const connectDB = async () => {
 	}
 }
 
-connectDB()
+connectDB();
+
+const storage = multer.diskStorage({
+	destination: function (req, file, cb) {
+	  	cb(null, 'images')
+	},
+	filename: function (req, file, cb) {
+		cb(null, req.body.name);
+	}
+})
+  
+const upload = multer({ storage: storage });
+
+app.post('/api/upload', upload.single("file"), (req, res) => {
+	res.status(200).json({ success: true, message: 'File has been uploaded' });
+})
 
 app.use(express.json());
 app.use('/api/auth', authRouter);
 app.use('/api/users', userRouter);
 app.use('/api/post', postRouter);
 app.use('/api/category', categoryRouter);
+
 
 const port = 5000;
 app.listen(port, () => console.log(`Server running at http://localhost:${port}`))

@@ -85,3 +85,11 @@ Content-Type: application/json
 
 ###
 GET http://localhost:5000/api/category
+
+###
+POST http://localhost:5000/api/upload
+Content-Type: application/json
+
+{
+    "name": "https://pbs.twimg.com/media/EDE8TYTUYAAv9-R.jpg:large"
+}
