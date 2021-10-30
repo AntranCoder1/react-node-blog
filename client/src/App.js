@@ -5,17 +5,24 @@ import Single from './pages/single/Single';
 import Write from './pages/write/Write';
 import Setting from './pages/setting/Setting';
 import Login from './pages/login/Login';
+import Register from './pages/register/Register';
+
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
+  const user = true;
   return (
-    <>
+    <Router>
       <TopBar />
-      <Login />
-      {/* <Setting /> */}
-      {/* <Write /> */}
-      {/* <Single /> */}
-      {/* <Home /> */}
-    </>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/register" component={user ? Home : Register} />
+        <Route exact path="/login" component={user ? Home : Login} />
+        <Route exact path="/write" component={user ? Write : Register} />
+        <Route exact path="/setting" component={user ? Setting : Register} />
+        <Route exact path="/post/:postId" component={Single} />
+      </Switch>
+    </Router>
   );
 }
 

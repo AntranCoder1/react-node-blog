@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './TopBar.css';
 
 const TopBar = () => {
+    const user = true;
     return (
         <div className="topBar">
             <div className="topBarLeft">
@@ -12,19 +14,34 @@ const TopBar = () => {
             </div>
             <div className="topBarCenter">
                 <ul className="topBarList">
-                    <li className="topBarListItem">HOME</li>
+                    <li className="topBarListItem">
+                        <Link to="/">HOME</Link>
+                    </li>
                     <li className="topBarListItem">ABOUT</li>
                     <li className="topBarListItem">CONTACT</li>
-                    <li className="topBarListItem">WRITE</li>
-                    <li className="topBarListItem">LOGOUT</li>
+                    <li className="topBarListItem">
+                        <Link to="/write">WRITE</Link>
+                    </li>
+                    <li className="topBarListItem">
+                        { user && "LOGOUT" }
+                    </li>
                 </ul>
             </div>
             <div className="topBarRight">
-                <img 
-                    src="https://pbs.twimg.com/media/EDE8TYTUYAAv9-R.jpg:large" 
-                    alt="" 
-                    className="topBarImg"
-                />
+                {
+                    user ? (
+                        <img 
+                            src="https://pbs.twimg.com/media/EDE8TYTUYAAv9-R.jpg:large" 
+                            alt="" 
+                            className="topBarImg"
+                        />
+                    ) : (
+                        <>
+                            <Link to="/login" className="topBarListItem">LOGIN</Link>
+                            <Link to="/register" className="topBarListItem">REGISTER</Link>
+                        </>
+                    )
+                }
                 <i className="topBarSearchIcon fas fa-search"></i>
             </div>
         </div>
