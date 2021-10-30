@@ -24,7 +24,7 @@ const singlePost = () => {
                             Linh
                         </b>
                     </span>
-                    <span className="1 day ago"></span>
+                    <span>1 day ago</span>
                 </div>
                 <p className="singlePostDesc">
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste error
