@@ -1,26 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './Post.css';
 
-const Post = ({ img }) => {
+const Post = ({ post }) => {
+    // const PF = "http://localhost:5000/images/";
     return (
         <div className="post">
-            <img className="postImg" src={img} alt="" />
+            {post.image && <img className="postImg" src={post.image} alt="" />}
             <div className="postInfo">
                 <div className="postCats">
                     <span className="postCat">Music</span>
                     <span className="postCat">Life</span>
                 </div>
                 <span className="postTitle">
-                    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. 
+                    {post.title} 
                 </span>
                 <hr />
-                <span className="postDate">1 hour ago</span>
+                <span className="postDate">
+                    {new Date(post.createdAt).toDateString()}
+                </span>
             </div>
-            <p className="postDesc">
-                This is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
-                The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
-            </p>
+            <p className="postDesc">{post.desc}</p>
         </div>
     )
 }
