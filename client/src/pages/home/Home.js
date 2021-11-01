@@ -16,8 +16,6 @@ const Home = () => {
         }
         fetchPosts();
     }, []);
-    
-    console.log(posts);
 
     return (
         <>

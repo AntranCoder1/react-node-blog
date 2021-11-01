@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Post.css';
+import { useLocation } from 'react-router-dom';
 
 const Post = ({ post }) => {
     // const PF = "http://localhost:5000/images/";
