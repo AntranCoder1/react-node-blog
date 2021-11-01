@@ -1,7 +1,10 @@
 import React from 'react';
+import { useLocation } from 'react-router';
 import './SinglePost.css';
 
 const singlePost = () => {
+    const location = useLocation();
+    console.log(location.pathname.split("/")[2]);
     return (
         <div className="singlePost">
             <div className="singlePostWrapper">

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Post.css';
 
 const Post = ({ post }) => {
@@ -8,12 +9,15 @@ const Post = ({ post }) => {
             {post.image && <img className="postImg" src={post.image} alt="" />}
             <div className="postInfo">
                 <div className="postCats">
-                    <span className="postCat">Music</span>
-                    <span className="postCat">Life</span>
+                    {post.categories.map(cat => (
+                        <span className="postCat">{cat.name}</span>
+                    ))}
                 </div>
-                <span className="postTitle">
-                    {post.title} 
-                </span>
+                <Link to={`/post/${post._id}`} className="link">
+                    <span className="postTitle">
+                        {post.title} 
+                    </span>
+                </Link>
                 <hr />
                 <span className="postDate">
                     {new Date(post.createdAt).toDateString()}
