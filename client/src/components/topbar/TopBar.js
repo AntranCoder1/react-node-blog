@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './TopBar.css';
 
 const TopBar = () => {
-    const user = true;
+    const user = false;
     return (
         <div className="topBar">
             <div className="topBarLeft">
