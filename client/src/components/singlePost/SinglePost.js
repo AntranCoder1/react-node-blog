@@ -1,10 +1,12 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
+import { Context } from "../../context/Context";
 import "./SinglePost.css";
 
 export default function SinglePost() {
+    const { user } = useContext(Context);
     const location = useLocation();
     const path = location.pathname.split("/")[2];
     const [post, setPost] = useState({});
@@ -31,8 +33,12 @@ export default function SinglePost() {
                 <h1 className="singlePostTitle">
                     {post.title}
                     <div className="singlePostEdit">
-                        <i className="singlePostIcon far fa-edit"></i>
-                        <i className="singlePostIcon far fa-trash-alt"></i>
+                        {user && (
+                            <>
+                                <i className="singlePostIcon far fa-edit"></i>
+                                <i className="singlePostIcon far fa-trash-alt"></i>
+                            </>
+                        )}
                     </div>
                 </h1>
                 <div className="singlePostInfo">
