@@ -3,11 +3,15 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const multer  = require('multer');
+const path = require('path');
 
 const authRouter = require('./routes/auth.router');
 const userRouter = require('./routes/user.router');
 const postRouter = require('./routes/posts.router');
 const categoryRouter = require('./routes/category.router');
+
+app.use(express.json());
+app.use('/images', express.static(path.join(__dirname, "/images")));
 
 const connectDB = async () => {
 	try {
@@ -45,7 +49,6 @@ app.post('/api/upload', upload.single("file"), (req, res) => {
 	res.status(200).json({ success: true, message: 'File has been uploaded' });
 })
 
-app.use(express.json());
 app.use('/api/auth', authRouter);
 app.use('/api/users', userRouter);
 app.use('/api/post', postRouter);

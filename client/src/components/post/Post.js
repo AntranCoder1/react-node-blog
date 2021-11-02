@@ -4,10 +4,10 @@ import './Post.css';
 import { useLocation } from 'react-router-dom';
 
 const Post = ({ post }) => {
-    // const PF = "http://localhost:5000/images/";
+    const PF = "http://localhost:5000/images/";
     return (
         <div className="post">
-            {post.image && <img className="postImg" src={post.image} alt="" />}
+            {post.image && <img className="postImg" src={PF + post.image} alt="" />}
             <div className="postInfo">
                 <div className="postCats">
                     {post.categories.map(cat => (
