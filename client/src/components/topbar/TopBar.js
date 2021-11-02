@@ -4,7 +4,12 @@ import { Context } from '../../context/Context';
 import './TopBar.css';
 
 const TopBar = () => {
-    const { user } = useContext(Context);
+    const { user, dispatch } = useContext(Context);
+
+    const handleLogout = () => {
+        dispatch({ type: "LOGOUT" })
+    }
+
     return (
         <div className="topBar">
             <div className="topBarLeft">
@@ -23,7 +28,7 @@ const TopBar = () => {
                     <li className="topBarListItem">
                         <Link to="/write">WRITE</Link>
                     </li>
-                    <li className="topBarListItem">
+                    <li className="topBarListItem" onClick={handleLogout}>
                         { user && "LOGOUT" }
                     </li>
                 </ul>
@@ -32,7 +37,7 @@ const TopBar = () => {
                 {
                     user ? (
                         <img 
-                            src="https://pbs.twimg.com/media/EDE8TYTUYAAv9-R.jpg:large" 
+                            src={user.profilePic}
                             alt="" 
                             className="topBarImg"
                         />
