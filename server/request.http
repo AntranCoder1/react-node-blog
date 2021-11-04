@@ -2,9 +2,9 @@ POST http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-    "username": "kieuoanh",
-    "email": "kieuoanh@gmail.com",
-    "password": "kieuoanh1"
+    "username": "thanhan",
+    "email": "thanhan@gmail.com",
+    "password": "thanhan"
 }
 
 ###
@@ -13,8 +13,8 @@ POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "nhuQuynh",
-    "password": "quynh1"
+    "username": "thanhan",
+    "password": "thanhan"
 }
 
 ###
@@ -23,9 +23,9 @@ PUT http://localhost:5000/api/users/6177e0ab66f62c21b430c6e5
 Content-Type: application/json
 
 {
-    "userId": "6177e0ab66f62c21b430c6e5",
-    "username": "thanhantran",
-    "password": "tranthanhan1"
+    "userId": "6182703828e3300cc4d780d0",
+    "username": "thanhan1",
+    "password": "thanhan1"
 }
 
 ###

@@ -5,6 +5,7 @@ import './TopBar.css';
 
 const TopBar = () => {
     const { user, dispatch } = useContext(Context);
+    const PF = 'http://localhost:5000/images/';
 
     const handleLogout = () => {
         dispatch({ type: "LOGOUT" })
@@ -36,11 +37,13 @@ const TopBar = () => {
             <div className="topBarRight">
                 {
                     user ? (
-                        <img 
-                            src={user.profilePic}
-                            alt="" 
-                            className="topBarImg"
-                        />
+                        <Link to="/setting">
+                            <img 
+                                src={PF + user.profilePic}
+                                alt="" 
+                                className="topBarImg"
+                            />
+                        </Link>
                     ) : (
                         <>
                             <Link to="/login" className="topBarListItem">LOGIN</Link>

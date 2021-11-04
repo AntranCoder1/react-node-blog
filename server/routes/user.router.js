@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const User = require("../models/user.models");
 const Post = require("../models/posts.models");
+const bcrypt = require("bcrypt");
 const argon2 = require('argon2');
 const jwt = require('jsonwebtoken');
 
@@ -10,26 +11,25 @@ const jwt = require('jsonwebtoken');
 router.put("/:id", async (req, res) => {
     if (req.body.userId === req.params.id) {
         if (req.body.password) {
-            req.body.password = await argon2.hash(req.body.password)
+            const salt = await bcrypt.genSalt(10);
+            req.body.password = await bcrypt.hash(req.body.password, salt);
         }
-
         try {
             const updatedUser = await User.findByIdAndUpdate(
-                req.params.id,
-                {
-                    $set: req.body,
-                },
-                { new: true }
+            req.params.id,
+            {
+                $set: req.body,
+            },
+            { new: true }
             );
-            res.status(200).json({ success: true, message: 'updated successfully', updatedUser })
-        } catch (error) {
-            console.log(error);
-            res.status(500).json({ success: false, message: 'Internal server error' })
+            res.status(200).json(updatedUser);
+        } catch (err) {
+            res.status(500).json(err);
         }
     } else {
-        res.status(500).json({ success: false, message: 'You can update only your account!' })
+        res.status(401).json("You can update only your account!");
     }
-})
+});
 
 // @router api/users/:id
 // @desc DELETE user
